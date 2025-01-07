@@ -1,0 +1,108 @@
+<div class="navbar">
+    <div class="logo">
+      <h2>CyberSecurity Chatbot</h2>
+    </div>
+    <ul class="nav-links">
+
+      <li><button class="nav-btn" routerLink="/home" (click)="goToHome()">Home</button></li>
+      <li><button class="nav-btn" routerLink="/chat" (click)="goToChat()">Chat</button></li>      
+      <li><button class="nav-btn" (click)="openLoginModal()">Login</button></li>
+      <li><button class="nav-btn" (click)="openRegisterModal()">Register</button></li>
+      <li><button class="nav-btn" routerLink="/home">logut</button></li> 
+    </ul>
+  </div>
+
+  
+  <div class="home-container">
+    <div class="hero">
+      <h1>Welcome to CyberSecurity Awareness</h1>
+      <p>Get ready to enhance your knowledge in cybersecurity and chat with our AI bot to learn more!</p>
+      <br> 
+      <button (click)="goToChat()">Start Secure Conversation</button>
+    </div>
+  </div>
+  
+  <!-- Stylish Modal for Login -->
+  <div class="modal" *ngIf="isLoginModalOpen" (click)="closeModal()">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+      <span class="close" (click)="closeModal()">&times;</span>
+      <h2>Login</h2>
+      <form (ngSubmit)="login(credentials)">
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" [(ngModel)]="credentials.username" placeholder="Enter your username">
+        
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" [(ngModel)]="credentials.password" placeholder="Enter your password">
+        
+        <button type="submit">Login</button>
+      </form>
+    </div>
+  </div>
+  
+  <!-- Stylish Modal for Register -->
+  <div class="modal" *ngIf="isRegisterModalOpen" (click)="closeModal()">
+    <div class="modal-content" (click)="$event.stopPropagation()">
+      <span class="close" (click)="closeModal()">&times;</span>
+      <h2>Register</h2>
+      <form (ngSubmit)="register(userData)">
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" [(ngModel)]="userData.username" placeholder="Choose a username">
+    
+        <label for="first_name">First Name</label>
+        <input type="text" id="first_name" name="first_name" [(ngModel)]="userData.first_name" placeholder="Enter your first name">
+    
+        <label for="last_name">Last Name</label>
+        <input type="text" id="last_name" name="last_name" [(ngModel)]="userData.last_name" placeholder="Enter your last name">
+    
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" [(ngModel)]="userData.email" placeholder="Enter your email">
+    
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" [(ngModel)]="userData.password" placeholder="Choose a password">
+    
+        <button type="submit">Register</button>
+      </form>
+  
+      <!-- Button to go to login -->
+      <p>Already have an account? <button (click)="openLoginModal()">Login</button></p>
+    </div>
+  </div>
+  
+  
+
+
+
+
+
+
+
+<div class="homepage">
+    <header class="home-header">
+      <h1>Welcome to SecureSpace</h1>
+      <p>Your Digital Security Companion</p>
+      <button (click)="goToChat()">Start Secure Conversation</button>
+    </header>
+  
+    <section class="features">
+      <div class="feature-item">
+        <i class="fa fa-lock"></i>
+        <h3>Data Encryption</h3>
+        <p>We ensure your data is fully encrypted and protected at every level.</p>
+      </div>
+      <div class="feature-item">
+        <i class="fa fa-shield-alt"></i>
+        <h3>Network Security</h3>
+        <p>Our solutions protect your network from unauthorized access and attacks.</p>
+      </div>
+      <div class="feature-item">
+        <i class="fa fa-bug"></i>
+        <h3>Vulnerability Assessment</h3>
+        <p>We identify and resolve vulnerabilities before they become serious threats.</p>
+      </div>
+    </section>
+  
+    <footer class="home-footer">
+      <p>Stay secure, stay protected. Contact us for advanced cybersecurity solutions.</p>
+    </footer>
+  </div>
+  

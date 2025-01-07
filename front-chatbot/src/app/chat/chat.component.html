@@ -1,0 +1,46 @@
+<div class="navbar">
+  <ul>
+    <li><button (click)="goToHome()">Home</button></li>
+    <li><button (click)="goToChat()">Chat</button></li>
+    <li><button (click)="logout()">logout</button></li>
+  </ul>
+</div>
+
+<div class="chat-container">
+    <header class="chat-header">
+      <h4>Chatbot</h4>
+    </header>
+    <main class="chat-history">
+      <ng-container *ngFor="let item of chatHistory">
+        <div class="message" [ngClass]="{'blue': item.from === 'user', 'green': item.from === 'bot'}">
+          <i class="fa" [ngClass]="{'fa-user-circle': item.from === 'user', 'fa-graduation-cap': item.from === 'bot'}"></i>
+          <span class="responses" [innerHTML]="formatText(item.message)"></span>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="loading">
+        <div class="user-card">
+            <div class="name4 skeleton"></div>
+            <div class="name3 skeleton"></div>
+            <div class="name2 skeleton"></div>
+            <div class="name1 skeleton"></div>
+        </div>
+      </ng-container>
+    </main>
+
+    <footer class="chat-input">
+      <input type="text" id="message-input" (keyup.enter)="SendData()" placeholder="type your messages..." [(ngModel)]="prompt" [disabled]="loading" autocomplete="off"/>
+      <button id="send-button" (click)="SendData()" [disabled]="loading">Send</button>
+    </footer>
+
+    <!-- Conversation choice buttons -->
+    <div class="conversation-choice">
+      <button (click)="chooseModel('rag')">Chatbot RAG</button>
+      <button (click)="chooseModel('fine-tuning')">Chatbot Fine Tuning</button>
+      <button (click)="chooseModel('diffusion')">Diffusion Model</button>
+    </div>
+</div>
+
+
+
+
+
